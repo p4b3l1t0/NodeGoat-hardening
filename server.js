@@ -82,7 +82,13 @@ MongoClient.connect(db, (err, db) => {
         secret: cookieSecret,
         // Both mandatory in Express v4
         saveUninitialized: true,
-        resave: true
+        resave: true,
+        // Fix for A3 - XSS
+        cookie: {
+            httpOnly: true,
+            secure: true,
+            maxAge: 2592000000,
+        }
         /*
         // Fix for A5 - Security MisConfig
         // Use generic cookie name
@@ -90,14 +96,6 @@ MongoClient.connect(db, (err, db) => {
         */
 
         /*
-        // Fix for A3 - XSS
-        // TODO: Add "maxAge"
-        cookie: {
-            httpOnly: true
-            // Remember to start an HTTPS server to get this working
-            // secure: true
-        }
-        */
 
     }));
 
