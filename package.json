@@ -23,7 +23,7 @@
     "underscore": "^1.12.1"
   },
   "comments": {
-    "//": "a9 insecure components"
+    "//": "a9 insecure components - LOS COMPONENTES VULNERABLES HAN SIDO ACTUALIZADOS A LAS VERSIONES RECOMENDADAS POR SNYK"
   },
   "scripts": {
     "start": "node server.js",
