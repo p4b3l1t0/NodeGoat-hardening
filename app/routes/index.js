@@ -66,10 +66,22 @@ const index = (app, db) => {
     app.get("/memos", isLoggedIn, memosHandler.displayMemos);
     app.post("/memos", isLoggedIn, memosHandler.addMemos);
 
-    // Handle redirect for learning resources link
+    const allowedUrls = [
+      "https://help.yourapp.com/",
+      "https://resources.yourapp.com/guides",
+      "https://tutorials.yourapp.com/basics",
+      "https://community.yourapp.com/forums",
+      "https://docs.yourapp.com/api"
+    ];
+    
+    // Handle redirect for learning resources link - control de las redirecciones
     app.get("/learn", isLoggedIn, (req, res) => {
-        // Insecure way to handle redirects by taking redirect url from query string
-        return res.redirect(req.query.url);
+        const targetUrl = req.query.url;
+
+        if (!allowedUrls.includes(targetUrl)) {
+            return res.status(400).send("URL no permitida");
+        }
+        return res.redirect(targetUrl);
     });
 
     // Research Page
