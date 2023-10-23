@@ -52,6 +52,9 @@ MongoClient.connect(db, (err, db) => {
     // Forces browser to only use the Content-Type set in the response header instead of sniffing or guessing it
     app.use(helmet.noSniff());
 
+    // Protect against XSS attacks by setting the X-XSS-Protection header
+    app.use(helmet.xssFilter());
+
     // Adding/ remove HTTP Headers for security
     app.use(favicon(__dirname + "/app/assets/favicon.ico"));
 
