@@ -1,9 +1,20 @@
 const express = require("express");
+const rateLimit = require("express-rate-limit"); // Implementación de Rate Limiter
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 100, // Limitar IP cada 100 solicitudes por windowMs
+    message: "Too many requests, please try again later."
+});
+
 const {
     environmentalScripts
 } = require("../../config/config");
 
 const router = express.Router();
+
+// Implementar el limiter Middleware a todas las rutas
+router.use(limiter);
 
 router.get("/", (req, res) => {
     "use strict";
