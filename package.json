@@ -20,7 +20,7 @@
     "node-esapi": "0.0.1",
     "serve-favicon": "^2.3.0",
     "swig": "^1.4.2",
-    "underscore": "^1.12.1"
+    "underscore": "^1.13.6"
   },
   "comments": {
     "//": "a9 insecure components - LOS COMPONENTES VULNERABLES HAN SIDO ACTUALIZADOS A LAS VERSIONES RECOMENDADAS POR SNYK"
